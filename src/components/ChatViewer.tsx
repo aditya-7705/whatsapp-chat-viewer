@@ -29,8 +29,8 @@ function parseDisplayDate(value: string): string | null {
   return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
-
 export function ChatViewer() {
+
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [fileName, setFileName] = useState<string>("");
   const [me, setMe] = useState<string>("");
