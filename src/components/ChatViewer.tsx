@@ -99,8 +99,10 @@ export function ChatViewer() {
   function jumpToDate(dateStr: string) {
     setDateFilter(dateStr);
     if (!dateStr) return;
+    const dateKey = parseDisplayDate(dateStr);
+    if (!dateKey) return;
     // find first message with that dateKey
-    const target = messages.find((m) => m.dateKey === dateStr);
+    const target = messages.find((m) => m.dateKey === dateKey);
     if (target) {
       const el = messageRefs.current.get(target.id);
       el?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -108,6 +110,7 @@ export function ChatViewer() {
       setTimeout(() => el?.classList.remove("ring-2", "ring-primary"), 1500);
     }
   }
+
 
   function reset() {
     setMessages([]);
