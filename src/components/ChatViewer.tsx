@@ -16,10 +16,21 @@ function formatDateHeader(key: string) {
   yest.setDate(today.getDate() - 1);
   if (date.toDateString() === today.toDateString()) return "Today";
   if (date.toDateString() === yest.toDateString()) return "Yesterday";
-  return date.toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  return `${String(d).padStart(2, "0")}/${String(m).padStart(2, "0")}/${y}`;
+}
+function parseDisplayDate(value: string): string | null {
+  const match = value.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!match) return null;
+  const [, d, m, y] = match;
+  const day = parseInt(d, 10);
+  const month = parseInt(m, 10);
+  const year = parseInt(y, 10);
+  if (month < 1 || month > 12 || day < 1 || day > 31) return null;
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
 export function ChatViewer() {
+
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [fileName, setFileName] = useState<string>("");
   const [me, setMe] = useState<string>("");
@@ -88,8 +99,10 @@ export function ChatViewer() {
   function jumpToDate(dateStr: string) {
     setDateFilter(dateStr);
     if (!dateStr) return;
+    const dateKey = parseDisplayDate(dateStr);
+    if (!dateKey) return;
     // find first message with that dateKey
-    const target = messages.find((m) => m.dateKey === dateStr);
+    const target = messages.find((m) => m.dateKey === dateKey);
     if (target) {
       const el = messageRefs.current.get(target.id);
       el?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -99,6 +112,7 @@ export function ChatViewer() {
   }
 
   function reset() {
+
     setMessages([]);
     setFileName("");
     setMe("");
@@ -215,12 +229,14 @@ export function ChatViewer() {
         <div className="relative">
           <Calendar className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            type="date"
+            type="text"
+            placeholder="dd/mm/yyyy"
             value={dateFilter}
             onChange={(e) => jumpToDate(e.target.value)}
             className="pl-9 sm:w-48"
           />
         </div>
+
       </div>
 
       {/* Stats strip on mobile */}
