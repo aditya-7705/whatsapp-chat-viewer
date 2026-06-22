@@ -1,29 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ChatViewer } from "@/components/ChatViewer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "WhatsApp Chat Viewer — View exported chats locally" },
+      { name: "description", content: "Upload your exported WhatsApp .txt or .zip and view it in a clean, searchable interface. 100% local and private." },
+      { property: "og:title", content: "WhatsApp Chat Viewer" },
+      { property: "og:description", content: "View exported WhatsApp chats in a clean interface. Search, filter by date, and see stats — all locally in your browser." },
     ],
   }),
-  component: Index,
+  component: ChatViewer,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
