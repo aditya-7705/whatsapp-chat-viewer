@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "WhatsApp Chat Viewer" },
+      { name: "description", content: "View exported WhatsApp chats in a clean WhatsApp-style interface. Search messages, All processing happens locally in your browser." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "WhatsApp Chat Viewer" },
+      { property: "og:description", content: "View exported WhatsApp chats in a clean WhatsApp-style interface. Search messages, All processing happens locally in your browser." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "WhatsApp Chat Viewer" },
+      { name: "twitter:description", content: "View exported WhatsApp chats in a clean WhatsApp-style interface. Search messages, All processing happens locally in your browser." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/98288c85-a36c-47f4-821b-a45b1650df37" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/98288c85-a36c-47f4-821b-a45b1650df37" },
     ],
     links: [
       {
