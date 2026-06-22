@@ -235,8 +235,8 @@ export function ChatViewer() {
             onChange={(e) => jumpToDate(e.target.value)}
             className="pl-9 sm:w-48"
           />
-
         </div>
+
       </div>
 
       {/* Stats strip on mobile */}
