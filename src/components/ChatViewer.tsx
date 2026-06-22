@@ -111,8 +111,8 @@ export function ChatViewer() {
     }
   }
 
-
   function reset() {
+
     setMessages([]);
     setFileName("");
     setMe("");
